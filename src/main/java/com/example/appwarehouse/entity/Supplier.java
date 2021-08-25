@@ -13,5 +13,5 @@ import javax.persistence.Entity;
 public class Supplier extends AbsEntity {
 
     @Column(nullable = false,unique = true)
-    private String phone_number;
+    private Integer phoneNumber;
 }

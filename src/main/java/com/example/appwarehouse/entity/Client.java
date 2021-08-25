@@ -1,24 +1,21 @@
 package com.example.appwarehouse.entity;
 
 
+import com.example.appwarehouse.entity.template.AbsEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Client {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+public class Client extends AbsEntity {
 
     @Column(nullable = false)
-    private String name;
-
-    @Column(nullable = false)
-    private Integer phone_number;
+    private Integer phoneNumber;
 }

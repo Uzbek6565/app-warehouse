@@ -6,22 +6,28 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Attachment {
+public class InputProduct {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(nullable = false, unique = true)
-    private String name;
+    @ManyToOne
+    private Product product;
 
-    @Column
-    private long size;
+    @Column(nullable = false)
+    private Double amount;
 
-    @Column
-    private String contentType;
+    @Column(nullable = false)
+    private Double price;
+
+    private Date date;
+
+    @ManyToOne
+    private Input input;
 }
