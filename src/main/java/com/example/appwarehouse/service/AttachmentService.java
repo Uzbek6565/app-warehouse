@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import java.io.IOException;
 import java.util.Iterator;
+import java.util.List;
 
 @Service
 public class AttachmentService {
@@ -32,5 +33,34 @@ public class AttachmentService {
         AttachmentContent attachmentContent = new AttachmentContent(null, file.getBytes(), savedAttachment);
         attachmentContentRepository.save(attachmentContent);
         return new Result("File uploaded", true, savedAttachment.getId());
+    }
+
+    public List<Attachment> getAllAttachments() {
+        return attachmentRepository.findAll();
+    }
+
+    public Attachment getAttachmentById(Integer id) {
+        if (attachmentRepository.existsById(id))
+            return attachmentRepository.getById(id);
+        return null;
+    }
+
+
+    public Result editAttachment(Integer id, Attachment attachment) {
+        if (!attachmentRepository.existsById(id))
+            return new Result("File not found", false);
+        Attachment attachmentById = attachmentRepository.getById(id);
+        attachmentById.setName(attachment.getName());
+        attachmentById.setContentType(attachment.getContentType());
+        attachmentById.setSize(attachment.getSize());
+        attachmentRepository.save(attachment);
+        return new Result("File is edited", true);
+    }
+
+    public Result deleteAttachment(Integer id) {
+        if (!attachmentRepository.existsById(id))
+            return new Result("File not found", false);
+        attachmentRepository.deleteById(id);
+        return new Result("File is deleted", true);
     }
 }
