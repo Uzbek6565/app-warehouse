@@ -15,5 +15,5 @@ public abstract class AbsEntity {
     private String name;
 
     @Column(nullable = false)
-    boolean active;
+    private boolean active = true;
 }
