@@ -16,6 +16,6 @@ import javax.persistence.*;
 @Entity
 public class Client extends AbsEntity {
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private Integer phoneNumber;
 }

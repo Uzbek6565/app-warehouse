@@ -35,4 +35,9 @@ public class ProductController {
     public Result editProduct(@PathVariable Integer id, ProductDto productDto){
         return productService.editProduct(id, productDto);
     }
+
+    @DeleteMapping("/{id}")
+    public Result deleteProduct(@PathVariable Integer id){
+        return productService.deleteProduct(id);
+    }
 }

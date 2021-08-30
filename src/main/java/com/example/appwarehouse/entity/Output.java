@@ -28,6 +28,7 @@ public class Output {
     private String factureNumber;
 
     @Column(nullable = false, unique = true)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String code;
 
     @ManyToOne
