@@ -3,7 +3,10 @@ package com.example.appwarehouse.service;
 import com.example.appwarehouse.entity.Output;
 import com.example.appwarehouse.message.Result;
 import com.example.appwarehouse.payload.OutputDto;
+import com.example.appwarehouse.repository.ClientRepository;
+import com.example.appwarehouse.repository.CurrencyRepository;
 import com.example.appwarehouse.repository.OutputRepository;
+import com.example.appwarehouse.repository.WarehouseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +17,14 @@ public class OutputService {
     @Autowired
     OutputRepository outputRepository;
 
+    @Autowired
+    WarehouseRepository warehouseRepository;
+
+    @Autowired
+    CurrencyRepository currencyRepository;
+
+    @Autowired
+    ClientRepository clientRepository;
 
     public Result addOutput(OutputDto outputDto) {
 

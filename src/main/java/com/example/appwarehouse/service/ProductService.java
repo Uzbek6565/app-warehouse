@@ -83,6 +83,7 @@ public class ProductService {
         if (!productRepository.existsById(id))
             return new Result("Product not found", false);
         productRepository.deleteById(id);
-        return new Result("Product is deleted", true);
+        return new Result("Product is deleted" +
+                "", true);
     }
 }
