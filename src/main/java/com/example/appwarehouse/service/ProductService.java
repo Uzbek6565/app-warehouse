@@ -51,12 +51,11 @@ public class ProductService {
         return productRepository.findAll();
     }
 
-    public Product getProductById(Integer id) {
+    public Result getProductById(Integer id) {
         if (productRepository.existsById(id))
-            return productRepository.getById(id);
-        return null;
+            return new Result("Product with Id: " + id, true, productRepository.getById(id));
+        return new Result("Product not found", false);
     }
-
 
     public Result editProduct(Integer id, ProductDto productDto) {
         if (!productRepository.existsById(id))
@@ -83,7 +82,6 @@ public class ProductService {
         if (!productRepository.existsById(id))
             return new Result("Product not found", false);
         productRepository.deleteById(id);
-        return new Result("Product is deleted" +
-                "", true);
+        return new Result("Product is deleted", true);
     }
 }

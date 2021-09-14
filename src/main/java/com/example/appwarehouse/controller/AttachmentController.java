@@ -27,7 +27,7 @@ public class AttachmentController {
     }
 
     @GetMapping("/upload/{id}")
-    public Attachment getAttachmentById(@PathVariable Integer id){
+    public Result getAttachmentById(@PathVariable Integer id){
         return attachmentService.getAttachmentById(id);
     }
 

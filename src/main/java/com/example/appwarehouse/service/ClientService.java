@@ -25,10 +25,10 @@ public class ClientService {
         return clientRepository.findAll();
     }
 
-    public Client getClientById(Integer id) {
+    public Result getClientById(Integer id) {
         if (clientRepository.existsById(id))
-            return clientRepository.getById(id);
-        return null;
+            return new Result("Client with ID: "+ id,true, clientRepository.getById(id));
+        return new Result("Client not found", false);
     }
 
     public Result editClient(Integer id, Client client) {

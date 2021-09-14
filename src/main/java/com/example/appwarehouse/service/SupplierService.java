@@ -24,10 +24,10 @@ public class SupplierService {
         return supplierRepository.findAll();
     }
 
-    public Supplier getSupplierById(Integer id) {
+    public Result getSupplierById(Integer id) {
         if (supplierRepository.existsById(id))
-            return supplierRepository.getById(id);
-        return null;
+            return new Result("Supplier with ID: " + id, true, supplierRepository.getById(id));
+        return new Result("Supplier not found", false);
     }
 
     public Result editSupplier(Integer id, Supplier supplier) {
@@ -46,6 +46,6 @@ public class SupplierService {
         if (!supplierRepository.existsById(id))
             return new Result("Supplier not found", false);
         supplierRepository.deleteById(id);
-        return new Result("Supplier isdeleted",true);
+        return new Result("Supplier isdeleted", true);
     }
 }

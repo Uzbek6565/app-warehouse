@@ -39,10 +39,10 @@ public class AttachmentService {
         return attachmentRepository.findAll();
     }
 
-    public Attachment getAttachmentById(Integer id) {
+    public Result getAttachmentById(Integer id) {
         if (attachmentRepository.existsById(id))
-            return attachmentRepository.getById(id);
-        return null;
+            return new Result("Attachment with ID: " + id, true, attachmentRepository.getById(id));
+        return new Result("File not found", false);
     }
 
 

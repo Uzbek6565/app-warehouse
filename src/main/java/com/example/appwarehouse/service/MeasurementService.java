@@ -25,10 +25,10 @@ public class MeasurementService {
         return measurementRepository.findAll();
     }
 
-    public Measurement getMeasurementById(Integer id){
+    public Result getMeasurementById(Integer id){
         if (measurementRepository.existsById(id))
-            return measurementRepository.getById(id);
-        return null;
+            return new Result("Measurement with ID: " + id, true, measurementRepository.getById(id));
+        return new Result("Measurement not found", false);
     }
 
     public Result editMeasurement(Integer id, Measurement measurement) {

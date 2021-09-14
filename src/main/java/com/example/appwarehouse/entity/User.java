@@ -27,7 +27,8 @@ public class User {
     @Column(nullable = false, unique = true)
     private Integer phoneNumber;
 
-    @Column(nullable = false)
+    @Column(nullable = false,unique = true)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String code;
 
     @Column(nullable = false)

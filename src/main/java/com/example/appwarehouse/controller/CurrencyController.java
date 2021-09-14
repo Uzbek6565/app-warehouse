@@ -25,7 +25,7 @@ public class CurrencyController {
     }
 
     @GetMapping("/{id}")
-    public Currency getCurrencyById(@PathVariable Integer id){
+    public Result getCurrencyById(@PathVariable Integer id){
         return currencyService.getCurrencyById(id);
     }
 

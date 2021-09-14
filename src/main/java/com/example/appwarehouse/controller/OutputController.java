@@ -26,8 +26,13 @@ public class OutputController {
     }
 
     @GetMapping("/{id}")
-    public Output getOutputById(@PathVariable Integer id){
+    public Result getOutputById(@PathVariable Integer id){
         return outputService.getOutputById(id);
+    }
+
+    @GetMapping("/{factureNumber}")
+    public Result getOutputByFactureNumber(@PathVariable String factureNumber){
+        return outputService.getOutputByFactureNumber(factureNumber);
     }
 
     @PutMapping("/{id}")

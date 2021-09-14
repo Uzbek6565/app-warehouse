@@ -28,10 +28,10 @@ public class CurrencyService {
     }
 
 
-    public Currency getCurrencyById(Integer id) {
+    public Result getCurrencyById(Integer id) {
         if (currencyRepository.existsById(id))
-            return currencyRepository.getById(id);
-        return null;
+            return new Result("Currency with ID: " + id, true, currencyRepository.getById(id));
+        return new Result("Currency already exists", false);
     }
 
     public Result editCurrency(Integer id, Currency currency) {

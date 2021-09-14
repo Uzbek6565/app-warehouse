@@ -26,7 +26,7 @@ public class MeasurementController {
     }
 
     @GetMapping("/{id}")
-    public Measurement getMeasurementById(@PathVariable Integer id){
+    public Result getMeasurementById(@PathVariable Integer id){
         return measurementService.getMeasurementById(id);
     }
 

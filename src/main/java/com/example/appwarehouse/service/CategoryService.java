@@ -34,10 +34,10 @@ public class CategoryService {
         return categoryRepository.findAll();
     }
 
-    public Category getCategoryById(Integer id){
+    public Result getCategoryById(Integer id) {
         if (categoryRepository.existsById(id))
-            return categoryRepository.getById(id);
-        return null;
+            return new Result("Category with ID: " + id, true, categoryRepository.getById(id));
+        return new Result("Category not found", false);
     }
 
     public Result editCategory(Integer id, CategoryDto categoryDto) {
